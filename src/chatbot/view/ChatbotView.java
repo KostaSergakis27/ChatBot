@@ -18,7 +18,7 @@ public class ChatbotView
 		String result = "";
 		
 		JOptionPane.showMessageDialog(null, "Hello, " + currentInput);
-		result = JOptionPane.showInputDialog(null, "are you done?");
+		result = JOptionPane.showInputDialog(null, "Are you done? Type 'seeya' to quit");
 		
 		return result;
 	}
