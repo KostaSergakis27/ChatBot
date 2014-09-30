@@ -97,9 +97,10 @@ public class Chatbot
 		
 		if(input.length() > 20)
 		{
+			stringTooLong = true;
 			JOptionPane.showMessageDialog(null, "That was long sentence! keep it down!");
 		}
-		return ;
+		return stringTooLong;
 		
 	}
 
