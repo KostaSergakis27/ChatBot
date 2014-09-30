@@ -1,4 +1,5 @@
 package chatbot.model;
+
 /**
  * The chatbot model class, used for checking and manipulating Strings.
  * @author Kosta Sergakis
@@ -40,7 +41,7 @@ public class Chatbot
 	
 	/**
 	 * Sets the name of the Chatbot.
-	 * @param name
+	 * @param name The new name of the Chatbot.
 	 */
 	public void setName(String name)
 	{
