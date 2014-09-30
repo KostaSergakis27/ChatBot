@@ -12,7 +12,11 @@ public class ChatbotView
 	{
 		this.baseController = baseController; 
 	}
-	
+	/**
+	 * shows the pop up window for the user to interact with the chatbot
+	 * @param currentInput most recent input from the user
+	 * @return 
+	 */
 	public String showChatbot(String currentInput)
 	{
 		String result = "";

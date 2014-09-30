@@ -1,5 +1,7 @@
 package chatbot.model;
 
+import java.util.ArrayList;
+
 /**
  * The chatbot model class, used for checking and manipulating Strings.
  * @author Kosta Sergakis
@@ -7,7 +9,7 @@ package chatbot.model;
  */
 public class Chatbot
 {
-	
+	private ArrayList<String> memeList;
 	private String name;
 	private int chatCount;
 	
@@ -40,7 +42,7 @@ public class Chatbot
 	}
 	
 	/**
-	 * Sets the name of the Chatbot.
+	 * Sets the name of the Chatbot to the supplied name.
 	 * @param name The new name of the Chatbot.
 	 */
 	public void setName(String name)
