@@ -2,6 +2,8 @@ package chatbot.model;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 /**
  * The chatbot model class, used for checking and manipulating Strings.
  * @author Kosta Sergakis
@@ -88,8 +90,16 @@ public class Chatbot
 		
 	}
 	
-	private void stringChecker()
+	private boolean stringChecker(String input)
 	{
+		
+		boolean stringTooLong = false;
+		
+		if(input.length() > 20)
+		{
+			JOptionPane.showMessageDialog(null, "That was long sentence! keep it down!");
+		}
+		return ;
 		
 	}
 
