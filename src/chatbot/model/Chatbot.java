@@ -21,22 +21,12 @@ public class Chatbot
 	 */
 	public Chatbot(String name)
 	{
+		memeList = new ArrayList<String>();
 		this.name = name;
 		chatCount = 0;
+		fillTheMemeList();
 	}
 	
-	/**
-	 * Processes input from the user against the checker methods. returns the next output for the view
-	 * @param currentInput The supplied Text
-	 * @return The processed text based on checker or other methods.
-	 */
-	public String processText(String currentInput)
-	{
-		String result = "";
-		
-		
-		return result;
-	}
 	
 	/**
 	 * Returns the name of the Chatbot object.
@@ -65,12 +55,86 @@ public class Chatbot
 		this.name = name;
 	}
 	
+	private void fillTheMemeList()
+	{
+		memeList.add("Puppies");
+		memeList.add("Doge");
+		memeList.add("y u no");
+		memeList.add("forever alone");
+		memeList.add("darth vader");
+		memeList.add("wut");
+	}
+	
+	/**
+	 * Processes input from the user against the checker methods. returns the next output for the view
+	 * @param currentInput The supplied Text
+	 * @return The processed text based on checker or other methods.
+	 */
+	public String processText(String currentInput)
+	{
+		String result = "";
+		
+		if(stringChecker(currentInput))
+		{
+			JOptionPane.showMessageDialog(null, "That was long sentence! keep it down!");
+		}
+		
+		if(memeChecker(currentInput))
+		{
+			result = "wow " + currentInput + " is a meme. Wahoo!";
+		}
+		else
+		{
+			result = "not a meme, try again";
+		}
+		return result;
+	}
+	
 	/**
 	 * increments the chat count.
 	 */
 	private void updateChatCount()
 	{
 		chatCount++;
+	}
+	
+	/**
+	 * checks to see if the users input is a meme or not.
+	 * @param input The supplied text
+	 * @return isAMeme boolean
+	 */
+	private boolean memeChecker(String input)
+	{
+		boolean isAMeme = false;
+		
+		for(String currentMeme : memeList)
+		{
+			if(input.equalsIgnoreCase(currentMeme))
+			{
+				isAMeme = true;
+			}
+		}
+		
+		for(int loopCounter = 0; loopCounter < memeList.size(); loopCounter++)
+		{
+			if(input.equalsIgnoreCase(memeList.get(loopCounter)))
+			{
+				isAMeme = true;
+			}
+		}
+		return isAMeme;
+	}
+	
+	private boolean stringChecker(String input)
+	{
+		
+		boolean stringTooLong = false;
+		
+		if(input.length() > 20)
+		{
+			stringTooLong = true;
+		}
+		return stringTooLong;
 	}
 	
 	/**
@@ -87,21 +151,6 @@ public class Chatbot
 			okToQuit = true;
 		}
 		return okToQuit;
-		
-	}
-	
-	private boolean stringChecker(String input)
-	{
-		
-		boolean stringTooLong = false;
-		
-		if(input.length() > 20)
-		{
-			stringTooLong = true;
-			JOptionPane.showMessageDialog(null, "That was long sentence! keep it down!");
-		}
-		return stringTooLong;
-		
 	}
 
 }
