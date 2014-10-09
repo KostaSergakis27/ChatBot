@@ -55,6 +55,9 @@ public class Chatbot
 		this.name = name;
 	}
 	
+	/**
+	 * fills the memeList with words for the chatbot to check
+	 */
 	private void fillTheMemeList()
 	{
 		memeList.add("Puppies");
@@ -74,20 +77,49 @@ public class Chatbot
 	{
 		String result = "";
 		
-		if(stringChecker(currentInput))
+		int randomPosition = (int) (Math.random() * 3);
+		if(currentInput != null)
 		{
-			JOptionPane.showMessageDialog(null, "That was long sentence! keep it down!");
-		}
-		
-		if(memeChecker(currentInput))
-		{
-			result = "wow " + currentInput + " is a meme. Wahoo!";
+			if(randomPosition == 0)
+			{
+				if(stringChecker(currentInput))
+				{
+					result = "too long :(";
+				}
+				else
+				{
+					result = "short words";
+				}
+			}
+			else if(randomPosition == 1)
+			{
+				if(contentChecker(currentInput))
+				{
+					result = "Wow! I like to play Halo too!";
+				}
+				else
+				{
+					result = "That is not as fun as Halo";
+				}
+			}
+			else
+			{
+				if(memeChecker(currentInput))
+				{
+					result = "wow " + currentInput + " is a meme. Wahoo!";
+				}
+				else
+				{
+					result = "not a meme, try again";
+				}
+			}
 		}
 		else
 		{
-			result = "not a meme, try again";
+			result = "use words!!!";
 		}
 		return result;
+		
 	}
 	
 	/**
@@ -98,6 +130,19 @@ public class Chatbot
 		chatCount++;
 	}
 	
+	
+	private boolean contentChecker(String input)
+	{
+		boolean videoGames = false;
+		
+		if(input.contains("Halo"))
+		{
+			videoGames = true;
+		}
+		
+		return videoGames;
+		
+	}
 	/**
 	 * checks to see if the users input is a meme or not.
 	 * @param input The supplied text
@@ -124,7 +169,11 @@ public class Chatbot
 		}
 		return isAMeme;
 	}
-	
+	/**
+	 * Checks the input from the User to see if it is too long
+	 * @param input Supplied text.
+	 * @return StringTooLong.
+	 */
 	private boolean stringChecker(String input)
 	{
 		
