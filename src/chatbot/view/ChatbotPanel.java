@@ -34,6 +34,7 @@ public class ChatbotPanel extends JPanel
 	private void setupPanel()
 	{
 		this.setBackground(Color.CYAN);
+		this.setSize(400, 400);
 		this.setLayout(baseLayout);
 		this.add(firstButton);
 		this.add(firstTextField);
