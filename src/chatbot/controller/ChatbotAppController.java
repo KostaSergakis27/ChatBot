@@ -13,9 +13,13 @@ import chatbot.view.ChatbotView;
 public class ChatbotAppController
 {
 	private ChatbotView appView;
+	
 	private Chatbot mySillyChatbot;
+	//Message greeting the user
 	private String startMessage;
+	//goodby message to the user
 	private String quitMessage;
+	
 	private ChatbotFrame appFrame;
 	/**
 	 * constructor for the controller, makes objects appView and mySillyChatbot
