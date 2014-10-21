@@ -19,7 +19,7 @@ public class ChatbotFrame extends JFrame
 		
 		setupFrame();
 	}
-	
+	//sets up the frame with the size and the layout
 	private void setupFrame()
 	{
 		this.setContentPane(basePanel);
