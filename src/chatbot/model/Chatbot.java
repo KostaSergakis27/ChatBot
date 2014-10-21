@@ -129,8 +129,11 @@ public class Chatbot
 	{
 		chatCount++;
 	}
-	
-	
+	/**
+	 * method checks the content of the input
+	 * @param input takes the input about halo
+	 * @return
+	 */
 	private boolean contentChecker(String input)
 	{
 		boolean videoGames = false;
@@ -155,14 +158,6 @@ public class Chatbot
 		for(String currentMeme : memeList)
 		{
 			if(input.equalsIgnoreCase(currentMeme))
-			{
-				isAMeme = true;
-			}
-		}
-		
-		for(int loopCounter = 0; loopCounter < memeList.size(); loopCounter++)
-		{
-			if(input.equalsIgnoreCase(memeList.get(loopCounter)))
 			{
 				isAMeme = true;
 			}
