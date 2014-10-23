@@ -12,14 +12,15 @@ import chatbot.view.ChatbotView;
  */
 public class ChatbotAppController
 {
+	//instance od the chatbotView, the view of the application.
 	private ChatbotView appView;
-	
+	//The instance of the Chatbot, the Model of this application.
 	private Chatbot mySillyChatbot;
 	//Message greeting the user
 	private String startMessage;
 	//goodby message to the user
 	private String quitMessage;
-	
+	//reference to the GUI JFrame object for the application.
 	private ChatbotFrame appFrame;
 	/**
 	 * constructor for the controller, makes objects appView and mySillyChatbot
@@ -42,7 +43,7 @@ public class ChatbotAppController
 	//Start method for the chatbot, runs the quick checker
 	public void start()
 	{
-		String result = appView.showChatbotDialog(startMessage);
+	//	String result = appView.showChatbotDialog(startMessage);
 		
 //		while(!mySillyChatbot.quitChecker(result))
 //		{
