@@ -93,6 +93,10 @@ public class ChatbotPanel extends JPanel
 			public void actionPerformed(ActionEvent click)
 			{
 				chatArea.append("\n You:" + (firstTextField.getText()));
+				String currentInput = firstTextField.getText();
+				String result = baseController.getChatbotDialog(currentInput);
+				showTextMessage(currentInput);
+				showTextMessage(result);
 				firstTextField.setText("");
 			}
 		});
@@ -116,5 +120,10 @@ public class ChatbotPanel extends JPanel
 				chatArea.select(chatArea.getCaretPosition()*12 , chatArea.getText().length());  
 			}  
 		});  
+	}
+	
+	public void showTextMessage(String userInput)
+	{
+		chatArea.append("\n" + userInput);
 	}
 }

@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 
 import chatbot.model.Chatbot;
 import chatbot.view.ChatbotFrame;
+import chatbot.view.ChatbotPanel;
 import chatbot.view.ChatbotView;
 /**
  * Runs the Chatbot Project. Owns the model and associated views.
@@ -43,15 +44,18 @@ public class ChatbotAppController
 	//Start method for the chatbot, runs the quick checker
 	public void start()
 	{
-	//	String result = appView.showChatbotDialog(startMessage);
 		
-//		while(!mySillyChatbot.quitChecker(result))
-//		{
-	//		result = mySillyChatbot.processText(result);
-//			result = appView.showChatbotDialog(result);
-	//	}
+		((ChatbotPanel) appFrame.getContentPane()).showTextMessage(startMessage);
+		//ChatbotPanel testPanel = (ChatbotPanel) appFrame.getContentPane();
 		
-//		quit();
+	}
+	
+	public String getChatbotDialog(String input)
+	{
+		String result = "";
+		result = mySillyChatbot.processText(input);
+			
+		return result;
 	}
 	
 	//quit method, tells the user goodbye then quits
