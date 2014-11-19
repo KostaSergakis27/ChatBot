@@ -22,20 +22,20 @@ public class ChatbotPanel extends JPanel
 	private SpringLayout baseLayout;
 	private JTextArea chatArea;
 	private JScrollPane chatPane;
-	private String startMessage;
+	
 	
 	public ChatbotPanel(ChatbotAppController baseController)
 	{
 		this.baseController = baseController;
 		
-		startMessage = "Welcome to the Derf chatbot. What is your name?";
+		
 		firstButton = new JButton("Click the button... it is so clicky :D");
 		firstTextField = new JTextField(25);
 		baseLayout = new SpringLayout();
 		chatArea = new JTextArea(5, 20);
 		chatPane = new JScrollPane(chatArea);
 		
-		chatArea.setText(startMessage);
+		
 		
 		setupPane();
 		setupPanel();
@@ -124,6 +124,6 @@ public class ChatbotPanel extends JPanel
 	
 	public void showTextMessage(String userInput)
 	{
-		chatArea.append("\n" + userInput);
+		chatArea.append(  userInput + "\n");
 	}
 }

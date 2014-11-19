@@ -47,14 +47,17 @@ public class ChatbotAppController
 		
 		((ChatbotPanel) appFrame.getContentPane()).showTextMessage(startMessage);
 		//ChatbotPanel testPanel = (ChatbotPanel) appFrame.getContentPane();
-		
+		//testpanel.showTextMessage(startMessage);
 	}
 	
 	public String getChatbotDialog(String input)
 	{
 		String result = "";
+		if(mySillyChatbot.quitChecker(input))
+		{
+			quit();
+		}
 		result = mySillyChatbot.processText(input);
-			
 		return result;
 	}
 	

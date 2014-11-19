@@ -14,7 +14,9 @@ public class Chatbot
 	private ArrayList<String> memeList;
 	private String name;
 	private int chatCount;
-	
+	private ChatbotUser myUser;
+	private ChatbotUser myAge;
+	private ArrayList<String> userInputList;
 	/**
 	 * Creates a Chatbot with the supplied name and initializes the current number of chats to zero.
 	 * @param name The supplied name for the Chatbot.
@@ -22,8 +24,11 @@ public class Chatbot
 	public Chatbot(String name)
 	{
 		memeList = new ArrayList<String>();
+		userInputList = new ArrayList<String>();
 		this.name = name;
 		chatCount = 0;
+		myUser = new ChatbotUser();
+		myAge = new ChatbotUser();
 		fillTheMemeList();
 	}
 	
@@ -46,6 +51,18 @@ public class Chatbot
 		return chatCount;
 	}
 	
+	public ChatbotUser getMyUser()
+	{
+		return myUser;
+	}
+
+
+	public void setMyUser(ChatbotUser myUser)
+	{
+		this.myUser = myUser;
+	}
+
+
 	/**
 	 * Sets the name of the Chatbot to the supplied name.
 	 * @param name The new name of the Chatbot.
@@ -76,52 +93,122 @@ public class Chatbot
 	public String processText(String currentInput)
 	{
 		String result = "";
-		
-		int randomPosition = (int) (Math.random() * 3);
-		if(currentInput != null)
+		if(getChatCount() < 5)
 		{
-			if(randomPosition == 0)
-			{
-				if(stringChecker(currentInput))
-				{
-					result = "too long :(";
-				}
-				else
-				{
-					result = "short words";
-				}
-			}
-			else if(randomPosition == 1)
-			{
-				if(contentChecker(currentInput))
-				{
-					result = "Wow! I like to play Halo too!";
-				}
-				else
-				{
-					result = "That is not as fun as Halo";
-				}
-			}
-			else
-			{
-				if(memeChecker(currentInput))
-				{
-					result = "wow " + currentInput + " is a meme. Wahoo!";
-				}
-				else
-				{
-					result = "not a meme, try again";
-				}
-			}
+			result = introduceUser(currentInput);
+		}
+		else if(currentInput != null && currentInput.length() > 0)
+		{
+			int randomPosition = (int) (Math.random() * 6);
+			result =randomChatConvo(currentInput);
 		}
 		else
 		{
 			result = "use words!!!";
 		}
+		updateChatCount();
 		return result;
 		
 	}
 	
+
+	private String introduceUser(String input)
+	{
+		String userQuestion = "";
+		
+		if(getChatCount() < 7)
+		{
+			//ask questions about all data members here
+			//you will need ifs or a switch
+			//assign via myUser.set...
+			if(getChatCount() == 0)
+			{
+				myUser.setUserName(input);
+				userQuestion = "Good name " + myUser.getUserName() + " how old are you?";
+			}
+			else if(getChatCount() == 1)
+			{
+				int userAge = Integer.parseInt(input);
+				myUser.setUserAge(userAge);
+				userQuestion = "Wow you are really old" + myUser.getUserName() + " how much do you weigh?";
+				
+			}
+		}
+	}
+		
+	private String randomChatConvo(String input)
+	{
+		String conversation = "";
+		int randomPosition = (int) (Math.random() * 6);
+		if(randomPosition == 0)
+		{
+			if(stringChecker(input))
+			{
+				conversation = "too long :(";
+			}
+			else
+			{
+				conversation = "short words";
+			}
+		
+		}
+		else if(randomPosition == 1)
+		{
+			if(contentChecker(input))
+			{
+				conversation = "Wow! I like to play Halo too!";
+			}
+			else
+			{
+				conversation = "That is not as fun as Halo";
+			}
+		}
+		else if(randomPosition == 2)
+		{
+			if(memeChecker(input))
+			{
+				conversation = "wow " + input + " is a meme. Wahoo!";
+			}
+			else
+			{
+				conversation = "not a meme, try again";
+			}
+			
+		}
+		else if(randomPosition == 3)
+		{
+			//from chat user
+		}
+		else if(randomPosition == 4)
+		{
+			//add current input to the userlist. result = something
+		}
+		else
+		{
+			if(userInputChecker(input))
+			{
+				
+			}
+		}
+	}
+	private boolean userInputChecker(String userInput)
+	{
+		boolean matchesInput = false;
+		
+		for(int loopCount = 0; loopCount > userInputList.size(); loopCount ++)
+		{
+			if(userInput.equalsIgnoreCase(userInputList.get(loopCount)))
+			{
+				matchesInput = true;
+				userInputList.remove(loopCount);
+				loopCount--;
+			}
+		}
+		return matchesInput;
+	}
+	
+		return userQuestion;
+	}
 	/**
 	 * increments the chat count.
 	 */
