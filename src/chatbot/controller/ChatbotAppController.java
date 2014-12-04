@@ -57,7 +57,7 @@ public class ChatbotAppController
 		{
 			quit();
 		}
-		result = mySillyChatbot.processText(input);
+		result = "\nChatbot: " + mySillyChatbot.processText(input);
 		return result;
 	}
 	

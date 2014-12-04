@@ -48,7 +48,7 @@ public class ChatbotPanel extends JPanel
 	{
 		chatArea.setLineWrap(true);
 		chatArea.setWrapStyleWord(true);
-		
+		chatArea.setEditable(false);
 		
 	}
 	/**
@@ -62,7 +62,7 @@ public class ChatbotPanel extends JPanel
 		this.add(firstButton);
 		this.add(firstTextField);
 		this.add(chatPane);
-		
+		firstTextField.requestFocus();
 		
 		
 	}
@@ -92,11 +92,12 @@ public class ChatbotPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				chatArea.append("\n You:" + (firstTextField.getText()));
+				chatArea.append("\n You: " + (firstTextField.getText()));
 				String currentInput = firstTextField.getText();
 				String result = baseController.getChatbotDialog(currentInput);
-				showTextMessage(currentInput);
+				//showTextMessage(currentInput);
 				showTextMessage(result);
+				firstTextField.requestFocus();
 				firstTextField.setText("");
 			}
 		});
@@ -108,6 +109,10 @@ public class ChatbotPanel extends JPanel
 				if(event.getKeyCode() == KeyEvent.VK_ENTER)
 				{
 					chatArea.append("\nYou: " + (firstTextField.getText()));
+					String currentInput = firstTextField.getText();
+					String result = baseController.getChatbotDialog(currentInput);
+					showTextMessage(result);
+					firstTextField.requestFocus();
 					firstTextField.setText("");
 				}
 			}
@@ -124,6 +129,6 @@ public class ChatbotPanel extends JPanel
 	
 	public void showTextMessage(String userInput)
 	{
-		chatArea.append(  userInput + "\n");
+		chatArea.append(  userInput + "");
 	}
 }

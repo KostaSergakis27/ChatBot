@@ -5,6 +5,7 @@ public class ChatbotUser
 {
 	private String userName;
 	private int userAge;
+	private int userWeight;
 	private boolean playsSports;
 	private boolean isMale;
 	
@@ -12,6 +13,7 @@ public class ChatbotUser
 	{
 		this.userName = "";
 		this.userAge = -999;
+		this.userWeight = -27;
 		this.playsSports = false;
 		this.isMale = false;
 	}
@@ -34,6 +36,16 @@ public class ChatbotUser
 	public void setUserAge(int userAge)
 	{
 		this.userAge = userAge;
+	}
+	
+	public int getUserWeight()
+	{
+		return userWeight;
+	}
+	
+	public void setUserWeight(int userWeight)
+	{
+		this.userWeight = userWeight;
 	}
 
 	public boolean isPlaysSports()

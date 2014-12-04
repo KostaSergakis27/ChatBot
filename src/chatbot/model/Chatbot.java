@@ -16,6 +16,7 @@ public class Chatbot
 	private int chatCount;
 	private ChatbotUser myUser;
 	private ChatbotUser myAge;
+	private ChatbotUser myWeight;
 	private ArrayList<String> userInputList;
 	/**
 	 * Creates a Chatbot with the supplied name and initializes the current number of chats to zero.
@@ -29,6 +30,7 @@ public class Chatbot
 		chatCount = 0;
 		myUser = new ChatbotUser();
 		myAge = new ChatbotUser();
+		myWeight = new ChatbotUser();
 		fillTheMemeList();
 	}
 	
@@ -116,7 +118,7 @@ public class Chatbot
 	{
 		String userQuestion = "";
 		
-		if(getChatCount() < 7)
+		if(getChatCount() < 5)
 		{
 			//ask questions about all data members here
 			//you will need ifs or a switch
@@ -130,10 +132,36 @@ public class Chatbot
 			{
 				int userAge = Integer.parseInt(input);
 				myUser.setUserAge(userAge);
-				userQuestion = "Wow you are really old" + myUser.getUserName() + " how much do you weigh?";
-				
+				userQuestion = "Wow you are really old " + myUser.getUserName() + "\nhow much do you weigh?";
+			}
+			else if(getChatCount() == 2)
+			{
+				int userWeight = Integer.parseInt(input);
+				myUser.setUserWeight(userWeight);
+				userQuestion = "Hmmm, " + myUser.getUserWeight() + " sounds about average for your age! \nDo you play any sports?";
+			}
+			else if(getChatCount() == 3)
+			{
+				if(input.equalsIgnoreCase("yes"))
+				{
+					boolean playsSports = true;
+					userQuestion = "Nice! I play sports too! Psych I don't have legs! \nLast question! Are you a boy or a girl?";
+				}
+				else
+				{
+					boolean playsSports = false;
+					userQuestion = "Oh... that's still cool I guess... \nLast question! Are you a boy or a girl?";
+				}
+			}
+			else 
+			{
+				if(input.equalsIgnoreCase("boy") || input.equalsIgnoreCase("male"))
+				{
+					userQuestion ="Wow! same lol jk im a computer";
+				}
 			}
 		}
+		return userQuestion;
 	}
 		
 	private String randomChatConvo(String input)
@@ -177,7 +205,14 @@ public class Chatbot
 		}
 		else if(randomPosition == 3)
 		{
-			//from chat user
+			if(mashChecker(input))
+			{
+				
+			}
+			else
+			{
+				
+			}
 		}
 		else if(randomPosition == 4)
 		{
@@ -185,12 +220,54 @@ public class Chatbot
 		}
 		else
 		{
-			if(userInputChecker(input))
-			{
-				
-			}
+			
 		}
+		return conversation;
 	}
+	
+	private String mashingDetected(String input)
+	{
+		String mashed = "";
+		
+		mashed = input.substring(input.length()/2);
+		mashed += input.substring(input.length()/2);
+		mashed += input.substring(input.length()/2);
+		mashed += input.substring(input.length()/2);
+		mashed += input.substring(input.length()/2);
+		
+		return mashed;
+	}
+	
+	private String noMashingDetected(String input)
+	{
+		String noMashing = "Thank you for not mashing your keboard with";
+		
+		noMashing += input.substring(input.length()/3, input.length()/2);
+		
+		return noMashing;
+	}
+	
+	private String userTopic(String userInput)
+	{
+		String userBasedResponse = "";
+		
+		int randomUserTopic = (int) (Math.random() * 6);
+		
+		switch(randomUserTopic)
+		{
+			case 1:
+				userBasedResponse = myUser.getUserAge() + "";
+				break;
+			case 0:
+				userBasedResponse = myUser.getUserName() + "is a silly name :P";
+				break;
+			default:
+				userBasedResponse = myUser.getUserAge() + "is really old ";
+				break;
+		}
+		return userBasedResponse;
+	}
+	
 	private boolean userInputChecker(String userInput)
 	{
 		boolean matchesInput = false;
@@ -204,11 +281,12 @@ public class Chatbot
 				loopCount--;
 			}
 		}
+		
 		return matchesInput;
 	}
 	
-		return userQuestion;
-	}
+		
+	
 	/**
 	 * increments the chat count.
 	 */
@@ -266,6 +344,23 @@ public class Chatbot
 			stringTooLong = true;
 		}
 		return stringTooLong;
+	}
+	
+	/**
+	 * Checker for keyboard mashing
+	 * @param userInput the user supplied text
+	 * @return whether mashing has been detected
+	 */
+	private boolean mashChecker(String userInput)
+	{
+		boolean isMashing = false;
+		if(userInput.indexOf("asdf") > -1)
+		{
+			isMashing = true;
+		}
+		
+	    return isMashing;
+		
 	}
 	
 	/**
