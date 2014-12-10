@@ -207,20 +207,16 @@ public class Chatbot
 		{
 			if(mashChecker(input))
 			{
-				
+				conversation = "Stop mashing the keyboard! that hurts!";
 			}
 			else
 			{
-				
+				conversation = "Thank you for being kind to the keyboard :)";
 			}
-		}
-		else if(randomPosition == 4)
-		{
-			//add current input to the userlist. result = something
 		}
 		else
 		{
-			
+			conversation = "You are boring!";
 		}
 		return conversation;
 	}
@@ -303,7 +299,7 @@ public class Chatbot
 	{
 		boolean videoGames = false;
 		
-		if(input.contains("Halo"))
+		if(input.equalsIgnoreCase("Halo"))
 		{
 			videoGames = true;
 		}
